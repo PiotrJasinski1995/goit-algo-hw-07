@@ -62,8 +62,8 @@ def delete(root, key):
 
 
 # function for calculating and returning max value of binary tree
-def max_value_binary_tree(node):
-    current = node
+def max_value_binary_tree(root_node):
+    current = root_node
 
     while current.right:
         current = current.right
@@ -71,8 +71,17 @@ def max_value_binary_tree(node):
 
 
 # function for calculating and returning min value of binary tree (using min_value_node(node) function)
-def min_value_binary_tree(node):
-    return min_value_node(node).val
+def min_value_binary_tree(root_node):
+    return min_value_node(root_node).val
+
+
+# function for calculating sum of all values in binary tree
+def sum_value_binary_tree(root_node):
+    if (root_node == None):
+        return 0
+    
+    return (root_node.val + sum_value_binary_tree(root_node.left) +
+                       sum_value_binary_tree(root_node.right)) 
 
 
 # Test
@@ -87,5 +96,6 @@ root = insert(root, 8)
 root = delete(root, 7)
 print(root)
 
-print('Max value of binary tree:\n', max_value_binary_tree(root))
-print('Min value of binary tree:\n', min_value_binary_tree(root))
+print('Max value of binary tree:', max_value_binary_tree(root), sep='\n')
+print('Min value of binary tree:', min_value_binary_tree(root), sep='\n')
+print('Sum of all values in binary tree:', sum_value_binary_tree(root), sep='\n')
