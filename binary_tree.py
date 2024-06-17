@@ -12,6 +12,7 @@ class Node:
             ret += self.right.__str__(level + 1, "R--- ")
         return ret
 
+
 def insert(root, key):
     if root is None:
         return Node(key)
@@ -22,6 +23,7 @@ def insert(root, key):
             root.right = insert(root.right, key)
     return root
 
+
 def search(root, key):
     if root is None or root.val == key:
         return root
@@ -29,11 +31,13 @@ def search(root, key):
         return search(root.left, key)
     return search(root.right, key)
 
+
 def min_value_node(node):
     current = node
     while current.left:
         current = current.left
     return current
+
 
 def delete(root, key):
     if not root:
@@ -66,6 +70,11 @@ def max_value_binary_tree(node):
     return current.val
 
 
+# function for calculating and returning min value of binary tree (using min_value_node(node) function)
+def min_value_binary_tree(node):
+    return min_value_node(node).val
+
+
 # Test
 root = Node(5)
 root = insert(root, 3)
@@ -79,3 +88,4 @@ root = delete(root, 7)
 print(root)
 
 print('Max value of binary tree:\n', max_value_binary_tree(root))
+print('Min value of binary tree:\n', min_value_binary_tree(root))
